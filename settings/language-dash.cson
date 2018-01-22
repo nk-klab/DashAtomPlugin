@@ -1,0 +1,64 @@
+'.source.perl':
+  autocomplete:
+    symbols:
+      class:
+        suggestions: [
+          'agent'
+          'knowledge'
+          'rule'
+          'initial_facts'
+          'property'
+          'function'
+          'comment'
+          'create'
+          'include'
+　　　　　 'rule-set'
+        ]
+      builtin:
+        suggestions: [
+          'sleep'
+          'alarm'
+          'print'
+          'settext'
+          'inspect'
+          'loadBP'
+          'startBP'
+          'control'
+          'method'
+          'terminate	'
+          'move'
+          'include'
+          'instantiate'
+          'activate'
+          'print'
+          'make'
+          'modify'
+          'Modify'
+          'make'
+          'Make'
+          'removeall'
+          'delete'
+          'pack'
+          'expand'
+          'bind'
+          'current-time'
+          'exists'
+          'lookup'
+          'toString'
+          'pop'
+          'push'
+          'unshift'
+          'shift'
+          'append'
+          'size'
+          'broadcast'
+          'fetchall'
+          'send'
+          'reply'
+          'remove'
+        ]
+      constant:
+        suggestions: [
+          '__INIT_I'
+          '__INIT_C'
+        ]
