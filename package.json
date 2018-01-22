@@ -1,0 +1,18 @@
+{
+  "name": "language-dash",
+  "main": "./lib/language-dash",
+  "version": "0.1.0",
+  "description": "The package to highlight DASH agent source code",
+  "keywords": [
+  ],
+  "activationCommands": {
+    "atom-workspace": "language-dash:toggle"
+  },
+  "repository": "https://github.com/atom/language-dash",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+  }
+}

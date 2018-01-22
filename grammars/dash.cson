@@ -1,0 +1,48 @@
+'name': 'dash'
+'scopeName': 'source.dash'
+'fileTypes': [
+  'dash'
+]
+'patterns': [
+
+  {
+    'match': '/\\*.+?\\*/'
+    'name': 'comment.block'
+  }
+  {
+    'match': '(//.*)'
+    'name': 'comment.line.double-slash'
+  }
+  {
+    'match': '(\\b([1-9]+)\\b)'
+    'name': 'constant.numeric.integer'
+  }
+  {
+    'match': '(\".*?\")'
+    'name': 'string.quoted.double'
+  }
+  {
+    'match': '(?<=:)[\\w\\-]*'
+    'name': 'entity.name.type'
+  }
+  {
+    'match': '(?<=\\?)[\\w\\-]*'
+    'name': 'variable'
+  }
+  {
+    'match': '(?<![^.]\\.|:)\\b(self)\\b -->'
+    'name': 'keyword.operator'
+  }
+  {
+    'match': '(?:[\\(\\)＆\\-\\*&<>=+!])'
+    'name': 'keyword.operator'
+  }
+  {
+    'match': '(loadBP|startBP|print|remove|control|bind|reply|send|inspect|modify)'
+    'name': 'support.function'
+  }
+  {
+     'match': '(?<!\\.)\\b(rule|knowledge|initial_facts|agent|property|create|function|comment|Msg)\\b'
+     'name': 'support.class'
+  }
+]
