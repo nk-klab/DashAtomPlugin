@@ -10,10 +10,14 @@
           'initial_facts'
           'property'
           'function'
+          'function :word \"functionName\"'
           'comment'
           'create'
+          'create :author \"authorName\"'
           'include'
           'Msg'
+          'Msg :performative perfName :content ()'
+          'rule ruleName\n\t(condition)\t\n-->\t\n(action)\n'
         ]
       builtin:
         suggestions: [
@@ -42,6 +46,7 @@
           'pack'
           'expand'
           'bind'
+          'bind ?var value'
           'current-time'
           'exists'
           'lookup'
