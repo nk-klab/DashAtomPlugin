@@ -1,10 +1,11 @@
-'.source.perl':
+'.source.dash':
   autocomplete:
     symbols:
       class:
         suggestions: [
           'agent'
           'knowledge'
+          'rule-set'
           'rule'
           'initial_facts'
           'property'
@@ -12,7 +13,7 @@
           'comment'
           'create'
           'include'
-　　　　　 'rule-set'
+          'Msg'
         ]
       builtin:
         suggestions: [
@@ -25,9 +26,8 @@
           'startBP'
           'control'
           'method'
-          'terminate	'
+          'terminate'
           'move'
-          'include'
           'instantiate'
           'activate'
           'print'
@@ -36,6 +36,7 @@
           'Modify'
           'make'
           'Make'
+          'remove'
           'removeall'
           'delete'
           'pack'
@@ -55,10 +56,12 @@
           'fetchall'
           'send'
           'reply'
-          'remove'
         ]
       constant:
         suggestions: [
           '__INIT_I'
           '__INIT_C'
+          '__Event'
+          '__Alarm'
+          '_broadcast'
         ]
