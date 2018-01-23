@@ -5,11 +5,11 @@
 ]
 'patterns': [
 
-  {
+  { # Block Comment
     'match': '/\\*.+?\\*/'
     'name': 'comment.block'
   }
-  {
+  { # Comment line
     'match': '(//.*)'
     'name': 'comment.line.double-slash'
   }
@@ -17,32 +17,36 @@
     'match': '(\\b([1-9]+)\\b)'
     'name': 'constant.numeric.integer'
   }
-  {
+  { # String quoted by double-quotation
     'match': '(\".*?\")'
     'name': 'string.quoted.double'
   }
-  {
-    'match': '(?<=:)[\\w\\-]*'
+  { # Attribute of OVA format data
+    'match': '(?<=:)[\\w\\-]+'
     'name': 'entity.name.type'
   }
-  {
-    'match': '(?<=\\?)[\\w\\-]*'
+  { # Variable
+    'match': '(?<=\\?)[\\w\\-]+'
     'name': 'variable'
   }
-  {
-    'match': '(?<![^.]\\.|:)\\b(self)\\b -->'
+  { # Reserved Constant
+    'match': '(?<=\\s)(__INIT_I|__INIT_C|__Event|__Alarm|_broadcast)(\\)\\s)'
+    'name': 'support.constant'
+  }
+  { # Operator defined in dash
+    'match': '(?<=\\()\\s*[\\-\\+\\*/%]\\s+'
     'name': 'keyword.operator'
   }
-  {
-    'match': '(?:[\\(\\)＆\\-\\*&<>=+!])'
+  { # Comparison Operator defined in dash
+    'match': '(?<=\\()\\s*(==|!=|>|>=|<|<=)\\s+'
     'name': 'keyword.operator'
   }
-  {
-    'match': '(loadBP|startBP|print|remove|control|bind|reply|send|inspect|modify)'
+  { # Builtin function in dash
+    'match': '(?<=\\()\\s*(sleep|alarm|print|settext|inspect|loadBP|startBP|control|method|terminate|move|instantiate|activate|print|make|modify|Modify|make|Make|remove|removeall|delete|pack|expand|bind|current-time|exists|lookup|toString|pop|push|unshift|shift|append|size|broadcast|fetchall|send|reply)\\b'
     'name': 'support.function'
   }
-  {
-     'match': '(?<!\\.)\\b(rule|knowledge|initial_facts|agent|property|create|function|comment|Msg)\\b'
+  { # Agent Primitive
+     'match': '(?<=\\()\\s*(agent|knowledge|rule-set|rule|initial_facts|property|function|create|include|comment|Msg)\\b'
      'name': 'support.class'
   }
 ]
