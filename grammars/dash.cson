@@ -2,6 +2,7 @@
 'scopeName': 'source.dash'
 'fileTypes': [
   'dash'
+  'rset'
 ]
 'patterns': [
 
