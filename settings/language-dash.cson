@@ -1,8 +1,17 @@
 '.source.dash':
+  editor:
+    commentStart: '// '
   autocomplete:
     symbols:
       class:
         suggestions: [
+          {
+            type: "class"
+            rightLabel: "Predefined agent class"
+            snippet: "agent ${1:@AgentName}"
+            description: "エージェント一体のクラス"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/lang.html#3.1"
+          }
           'agent'
           'knowledge'
           'rule-set'
@@ -10,22 +19,57 @@
           'initial_facts'
           'property'
           'function'
-          'function :word \"functionName\"'
+          {
+            type: "class"
+            rightLabel: "Predefined agent class"
+            snippet: "function  :word \"${1:@functionName}\""
+            description: "ネームサーバでlookupコマンド利用してエージェントを検索する際のエージェントが持つ機能情報の定義．  エージェントの機能名が、 function-wordで指定した文字列を含む場合にマッチする (機能名は、(property ..)内の(funciton :word ...)で指定する)。"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#lookup"
+          }
           'comment'
+          {
+            type: "class"
+            rightLabel: "Predefined agent class"
+            snippet: "function  :word \"${1:@functionName}\""
+            description: "ネームサーバでlookupコマンド利用してエージェントを検索する際のエージェントのコメント情報の定義．コメント: エージェントのコメントが、 comment-textで指定した文字列を含む場合にマッチする (機能名は、(property ..)内の(comment :text ...)で指定する)。"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#lookup"
+          }
           'create'
           'create :author \"authorName\"'
-          'include'
           'Msg'
           'Msg :performative perfName :content ()'
-          'rule ruleName\n\t(condition)\t\n-->\t\n(action)\n'
+          'rule ruleName\n\t\t(condition)\n\t\t-->\n\t\t(action)\n'
         ]
       builtin:
         suggestions: [
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "reply :performative ${1:@PERFNAME} :to ${2:@MSGVAR} :content (${3:@content})$0"
+            description: "メッセージMSGVARに対する返信メッセージを送信する。 送信は次のアクションに進む前に行われる。"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#reply"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "send :performative ${1:@PERFNAME} :to ${2:@MSGVAR} :content (${3:@content})$0"
+            description: "メッセージを送信する。送信は次のアクションに進む前に行われる。"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#send"
+          }
+
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "include :file ${1:@filename} :from ${2:@envName} :when ${2:@letter}$0"
+            description: "ルールセットを読みこみ利用可能にする。 読みこむファイル名はfilenameで指定する。ファイルはリポジトリあるいはワークプレースに格納されており、 どこから読みこむかはenvで指定できる。"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#include"
+          }
           'sleep'
           'alarm'
           'print'
           'settext'
           'inspect'
+          'inspect nonstop'
           'loadBP'
           'startBP'
           'control'
@@ -50,6 +94,20 @@
           'current-time'
           'exists'
           'lookup'
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "lookup :name ${1:@AgentName} :environment ${2:@envName}$0"
+            description: "指定した条件にマッチするエージェント名を返す。 lookupを実行すると、エージェントはネームサーバに問い合わせを行う。 そのため、ネームサーバを使わない場合にはlookupを使うことはできない。"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#lookup"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "lookup :name ${1:@AgentName} :environment ${2:@envName} :type ${3:@typeName}$0"
+            description: "指定した条件にマッチするエージェント名を返す。 lookupを実行すると、エージェントはネームサーバに問い合わせを行う。 そのため、ネームサーバを使わない場合にはlookupを使うことはできない。"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#lookup"
+          }
           'toString'
           'pop'
           'push'
@@ -59,14 +117,61 @@
           'size'
           'broadcast'
           'fetchall'
-          'send'
           'reply'
+          'make (FACTNAME :attr VALUE)'
+          'remove ?var'
+          'modify ?var:attr NEWVALUE'
+          'delete FACTNAME'
+          'bind ?var VALUE'
+          '+ arg1 arg2'
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "+ {1:@Argument1} ${2:@Argument2}"
+            description: "和を求める。 数値はdoubleではなく大きい10進数(java.math.BigDecimal)で計算される。"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#op"
+          }
+          '\- arg1 arg2'
+          '\* arg1 arg2'
+          '/ arg1 arg2'
+          '% arg1 arg2'
+          'push value ?arg'
+          'pop ?arg'
+          'loadBP CLASSNAME'
+          'control METHODNAME (ARG)'
+          'alarm :every MSEC :contentnt ()'
+          'alarm :cancel ALARMID'
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "alarm :at ${1:@time} :content (${2:@content})$0"
+            description: "時刻\"HH:MM:SS\"という形式で指定した時間にcontentのファクトを生成"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#alarm"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "alarm :after ${1:@milliSeconds} :content (${2:@content})$0"
+            description: "指定した時間(単位msec)後にファクトを生成する。"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#alarm"
+          }
+          'instantiate :into workplace :facts factlist'
+          'instantiate :from repository :name agent :facts factlist'
         ]
       constant:
         suggestions: [
-          '__INIT_I'
+          {
+            type: "constant"
+            rightLabel: "Predefined constant"
+            snippet: "__INIT_I$0"
+            description: "Ag起動直後に生成されるファクトのパフォーマティブ"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/sample/sample02.html"
+          }
+          # '__INIT_I'
           '__INIT_C'
           '__Event'
           '__Alarm'
           '_broadcast'
+          '_interface'
+          '_default'
         ]
