@@ -14,7 +14,7 @@
     'name': 'comment.line.double-slash'
   }
   {
-    'match': '(\\b([1-9]+)\\b)'
+    'match': '(?<=\\s)([1-9]+)(?=[\\)\\s])'
     'name': 'constant.numeric.integer'
   }
   { # String quoted by double-quotation
@@ -30,7 +30,7 @@
     'name': 'variable'
   }
   { # Reserved Constant
-    'match': '(?<=\\s)(__INIT_I|__INIT_C|__Event|__Alarm|_broadcast)(\\)\\s)'
+    'match': '(?<=\\s)(__INIT_I|__INIT_C|__Event|__Alarm|_broadcast|_default)(?=[\\)\\s])'
     'name': 'support.constant'
   }
   { # Operator defined in dash
@@ -46,7 +46,7 @@
     'name': 'support.function'
   }
   { # Agent Primitive
-     'match': '(?<=\\()\\s*(agent|knowledge|rule-set|rule|initial_facts|property|function|create|include|comment|Msg)\\b'
+     'match': '(?<=\\()\\s*(agent|knowledge|rule-set|rule|initial_facts|property|function|Status|create|include|comment|Msg)\\b'
      'name': 'support.class'
   }
 ]
