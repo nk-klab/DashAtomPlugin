@@ -1,6 +1,13 @@
 '.source.dash':
   editor:
     commentStart: '// '
+    increaseIndentPattern: '^.*\\([^\\)]*$'
+    decreaseIndentPattern: '^\\s*\\)\\s*$'
+    foldEndPattern: '(\\*/|^\\s*\\))'
+    unIndentedLinePattern: '^\\s*((/\\*|\\*/\\s*$|//).*)?$'
+    # increaseIndentPattern: '^.*\\([^\\)]*\\)*\\s*$'
+    # decreaseIndentPattern: '^\\s*\\)'
+    # nonWordCharacters: '/\\()"\':,.;<>~!#^&*|=[]{}`?'
   autocomplete:
     symbols:
       class:
