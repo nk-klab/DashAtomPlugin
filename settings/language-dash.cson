@@ -236,6 +236,285 @@
             description: "和を求める。 数値はdoubleではなく大きい10進数(java.math.BigDecimal)で計算される。"
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#op"
           }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "make ${1:@fact}$0"
+            description: """
+            factで指定したファクトを作成する。ファクトはOAVデータ形式のみであり、リスト形式のファクトは作成できない。作成したファクトは、ワーキングメモリ内にあるファクトの中で新しさが最新となる識別番号が付けられる。
+
+            :param @fact OAVデータ、またはOAVデータをバインドした変数。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#make"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "remove ?${1:@var}$0"
+            description: """
+            varにバインドしたファクトを削除する。(property ..)内のファクトは削除されない。
+
+            :param @var 削除したいファクトがバインドされた変数。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#remove"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "removeall"
+            description: "全てのファクトを削除する。(property ..)内のファクトは削除されない。"
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#removeall"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "modify ?${1:varName}:${2:attrName} ${3:value}$0"
+            description: """
+            varNameにバインドしたファクトの属性名attrNameをvalueにする。変数にはファクトをルール条件部でバインドしておく。値がファクトの場合、そのファクトは識別番号が更新され、新しさが最新になる。
+            ?varName:attrNameで指定した属性がない場合は変更できない。
+
+            :param @varName ファクトをバインドした変数名。
+            :param @attrName ファクトの属性名。
+            :param @value 定数・OAV型データ・リスト。またはこれらをバインドした変数・参照。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#modify"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "Modify ?${1:varName}:${2:attrName} ${3:value}$0"
+            description: """
+            varNameにバインドしたファクトの属性名attrNameをvalueにする。変数にはファクトをルール条件部でバインドしておく。値がファクトの場合、そのファクトは識別番号が更新され、新しさが最新になる。
+            ?varName:attrNameで指定した属性がない場合は、新たに属性attrNameをファクトに加え、その値をvalueにする。
+
+            :param @varName ファクトをバインドした変数名。
+            :param @attrName ファクトの属性名。
+            :param @value 定数・OAV型データ・リスト。またはこれらをバインドした変数・参照。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#modify"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "delete ${1:obj}$0"
+            description: """
+            objで指定したオブジェクト名のファクトをすべて消す。
+
+            :param @obj 定数、または定数をバインドした変数・参照。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#delete"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "pack ${1:obj}$0"
+            description: """
+            objで指定したオブジェクト名のファクトの集合をリストにして返す。
+
+            :param @obj 定数、または定数をバインドした変数・参照。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#pack"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "expand ${1:list}$0"
+            description: """
+            listで指定したリストの要素をファクトとしてワーキングメモリに展開する。リストの要素はOAVデータでなければならない。
+
+            :param @list OAVデータを要素に持つリスト、またはこれをバインドした変数。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#expand"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "bind ?${1:varName} ${2:value}$0"
+            description: """
+            変数?varNameに値valueをバインドする。valueには、定数などの他にアクションを記述することもできる。
+            アクションを記述した場合、?varNameにはアクションの実行結果がバインドされる。
+            すでに値のバインドされている変数に再バインドすることはできない。(bindより前に記述してある変数にはバインドできない。)
+
+            :param @varName 変数名。
+            :param @value 定数・OAV型データ・リスト、これらをバインドした変数・参照、または返値をもつアクション。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#bind"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "current-time"
+            description: "現在の時刻を返す。（返値の例：\"12:34:56\"）"
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#current-time"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "exists"
+            description: """
+            エージェントが同じ環境に存在しているかどうかを調べる。
+            存在する場合TRUEを、存在しない場合FALSEを返す。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#exists"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "- ${1:@Argument1} ${2:@Argument2}}$0"
+            description: "差を求める。 数値はdoubleではなく大きい10進数(java.math.BigDecimal)で計算される。"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#op"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "* ${1:@Argument1} ${2:@Argument2}}$0"
+            description: "積を求める。 数値はdoubleではなく大きい10進数(java.math.BigDecimal)で計算される。"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#op"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "/ ${1:@Argument1} ${2:@Argument2}}$0"
+            description: "商を求める。 数値はdoubleではなく大きい10進数(java.math.BigDecimal)で計算される。"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#op"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "% ${1:@Argument1} ${2:@Argument2}}$0"
+            description: "剰余を求める。 数値はdoubleではなく大きい10進数(java.math.BigDecimal)で計算される。"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#op"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "toString ${1:arg}$0"
+            description: """
+            argで指定したOAV型データまたはリストの文字列表現を返す。
+
+            :param @arg OAV型データまたはリストをバインドした変数・参照。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#toString"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "push ${1:value} ${2:arg}$0"
+            description: """
+            argで指定したリストの末尾に要素valueを追加する。
+
+            :param @value 定数・OAV型データ・リスト、またはこれらをバインドした変数・参照。
+            :param @arg リストをバインドした変数・参照。ただし、変数や参照が(property ..)のファクトを直接にバインドしている場合、このアクションは実行できない。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#push"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "pop ${1:arg}$0"
+            description: """
+            argで指定したリストから末尾の要素を削除しそれを返す。
+
+            :param @arg リストをバインドした変数・参照。ただし、変数や参照が(property ..)のファクトを直接にバインドしている場合、このアクションは実行できない。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#pop"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "unshift ${1:value} ${2:arg}$0"
+            description: """
+            argで指定したリストの先頭に要素valueを追加する。
+
+            :param @value 定数・OAV型データ・リスト、またはこれらをバインドした変数・参照。
+            :param @arg リストをバインドした変数・参照。ただし、変数や参照が(property ..)のファクトを直接にバインドしている場合、このアクションは実行できない。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#unshift"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "shift ${1:arg}$0"
+            description: """
+            argで指定したリストから先頭の要素を削除しそれを返す。
+
+            :param @arg リストをバインドした変数・参照。ただし、変数や参照が(property ..)のファクトを直接にバインドしている場合、このアクションは実行できない。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#shift"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "append ${1:arg1} ${2:arg2}$0"
+            description: """
+            リストarg1とarg2の要素を持つリストを作成しそれを返す。
+
+            :param @arg1 リスト、またはリストをバインドした変数・参照。
+            :param @arg2 リスト、またはリストをバインドした変数・参照。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#append"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "size ${1:arg}$0"
+            description: """
+            リストargの要素数を返す。0ならばそのリストは空である。
+
+            :param @arg リスト、またはリストを表す変数・参照。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#size"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "sleep ${1:milliSeconds}$0"
+            description: """
+            milliSecondsで指定した時間（単位ミリ秒）だけ動作を一時停止する。
+
+            :param @milliSeconds 数値定数、またはこれをバインドした変数・参照。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#sleep"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "print ${1:arg1}$0"
+            description: """
+            指定した引数を端末とインスペクタに表示する。端末はリポジトリ/ワークプレースを起動した端末である。引数は1つ以上指定する。
+            複数の引数を指定した場合、表示される引数は空白で区切られない。端末には「エージェント名: 引数引数...」と表示される。
+            空白は\" \"。改行は\"\\n\"。
+
+            :param @arg1 定数・OAV型データ・リスト、またはこれらをバインドした変数・参照。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#print"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "settext ${1:arg1}$0"
+            description: """
+            指定した引数をエージェントモニタのアイコンの横に表示する。 引数は1つ以上指定する。
+            引数に\"\"を指定した場合、表示されなくなる。
+
+            :param @arg1 定数・OAV型データ・リスト、またはこれらをバインドした変数・参照。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#settext"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "inspect"
+            description: "インスペクタを開く。インスペクタ起動後、動作を一時停止する。"
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#inspect"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "inspect nonstop"
+            description: "インスペクタを開く。インスペクタ起動後、動作は一時停止しない。"
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#inspect"
+          }
           # 'sleep'
           # 'alarm'
           # 'print'
