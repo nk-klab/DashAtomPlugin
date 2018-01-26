@@ -116,6 +116,96 @@
             description: "和を求める。 数値はdoubleではなく大きい10進数(java.math.BigDecimal)で計算される。"
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#op"
           }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "make ${1:@fact}$0"
+            description: """
+            factで指定したファクトを作成する。ファクトはOAVデータ形式のみであり、リスト形式のファクトは作成できない。作成したファクトは、ワーキングメモリ内にあるファクトの中で新しさが最新となる識別番号が付けられる。
+
+            :param @fact OAVデータ、またはOAVデータをバインドした変数。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#make"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "remove ?${1:@var}$0"
+            description: """
+            varにバインドしたファクトを削除する。(property ..)内のファクトは削除されない。
+
+            :param @var 削除したいファクトがバインドされた変数。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#remove"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "removeall"
+            description: "全てのファクトを削除する。(property ..)内のファクトは削除されない。"
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#removeall"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "modify ?${1:varName}:${2:attrName} ${3:value}$0"
+            description: """
+            varNameにバインドしたファクトの属性名attrNameをvalueにする。変数にはファクトをルール条件部でバインドしておく。値がファクトの場合、そのファクトは識別番号が更新され、新しさが最新になる。
+            ?varName:attrNameで指定した属性がない場合は変更できない。
+
+            :param @varName ファクトをバインドした変数名。
+            :param @attrName ファクトの属性名。
+            :param @value 定数・OAV型データ・リスト。またはこれらをバインドした変数・参照。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#modify"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "Modify ?${1:varName}:${2:attrName} ${3:value}$0"
+            description: """
+            varNameにバインドしたファクトの属性名attrNameをvalueにする。変数にはファクトをルール条件部でバインドしておく。値がファクトの場合、そのファクトは識別番号が更新され、新しさが最新になる。
+            ?varName:attrNameで指定した属性がない場合は、新たに属性attrNameをファクトに加え、その値をvalueにする。
+
+            :param @varName ファクトをバインドした変数名。
+            :param @attrName ファクトの属性名。
+            :param @value 定数・OAV型データ・リスト。またはこれらをバインドした変数・参照。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#modify"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "delete ${1:objName}$0"
+            description: """
+            objNameで指定したオブジェクト名のファクトをすべて消す。
+
+            :param @objName 定数、または定数をバインドした変数・参照。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#delete"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "pack ${1:objName}$0"
+            description: """
+            objNameで指定したオブジェクト名のファクトの集合をリストにして返す。
+
+            :param @objName 定数、または定数をバインドした変数・参照。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#pack"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "expand ${1:listName}$0"
+            description: """
+            listNameで指定したリストの要素をファクトとしてワーキングメモリに展開する。リストの要素はOAVデータでなければならない。
+
+            :param @listName OAVデータを要素に持つリスト、またはこれをバインドした変数。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#expand"
+          }
           # 'sleep'
           # 'alarm'
           # 'print'
