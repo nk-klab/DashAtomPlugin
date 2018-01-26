@@ -76,7 +76,7 @@
             メッセージmsgVarに対する返信メッセージを送信する。 送信は次のアクションに進む前に行われる。
 
             :param @perfName パフォーマティブ 定数あるいは、これをバインドした変数・参照。
-            :param @msgVar 返信するメッセージ。((Msg...)で表現されるOAV型のデータ)
+            :param @msgVar 返信するメッセージ。（(Msg...)で表現されるOAV型のデータ）
             :param @contVar メッセージの中身 OAV型データ・リスト、あるいはこれらをバインドした変数・参照。
             """
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#reply"
@@ -101,11 +101,33 @@
             description: "メッセージキューにあるすべてのメッセージをファクトとしてワーキングメモリに生成する。"
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#fetchall"
           }
+          # (7)ルールセット
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "activate ${1:@ruleSetVar}$0"
+            description: """
+            指定したルールセットをアクティブにする。アクティブにできるルールセットは以下の3つである。
+            (1)dashファイルの中で宣言したルールセット。
+            (2)includeアクションで読み込んだrsetファイル。
+            (3)_defaultルールセット。ルールセットで囲まれていないルールはすべてこのルールセットに入る
+            複数のルールセットをアクティブにするには(ruleSetVar1 ruleSetVar2...)のようにリストにする。ルールセット間の優先度はリストの記述順になる。
+
+            :param @ruleSetVar 活性化するルールセット名、あるいはそのリスト。
+            """
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#activate"
+          }
           {
             type: "function"
             rightLabel: "Builtin action"
             snippet: "include :file ${1:@filename} :from ${2:@envName} :when ${2:@letter}$0"
-            description: "ルールセットを読みこみ利用可能にする。 読みこむファイル名はfilenameで指定する。ファイルはリポジトリあるいはワークプレースに格納されており、 どこから読みこむかはenvで指定できる。"
+            description: """
+            ルールセット(ファイルの拡張子が.rsetのファイル)を読みこみ利用可能にする。 読みこむファイル名はfilenameで指定する。
+
+            :param @filename 読みこみ可能にするファイルのファイル名（例：Hogehoge.rset）。
+            :param @envName 読みこみ先の場所。省略可
+            :param @letter 読みこみの制御。省略可（省略した場合はエージェントがどんな環境でもルールセットを読みこみ可能にする。）
+            """
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#include"
           }
           {
