@@ -42,10 +42,69 @@
           }
           # 'agent'
           # 'knowledge'
+          {
+            type: "class"
+            rightLabel: "Predefined agent class"
+            snippet: "knowledge ${1:@rules}$0"
+            description: """
+            すべてのエージェントが持つルールセット。ここに記述されたルールは"_delaut"という名前のルールセットに属することになる。また、エージェント起動時にアクティブになっているルールセットでもある。
+
+            :param @rules ルールセットに属するrule。複数記述可能。
+            """
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/lang.html#3.6"
+          }
           # 'rule-set'
+          {
+            type: "class"
+            rightLabel: "Predefined agent class"
+            snippet: "rule-set \"${1:@ruleSetName}\" (property ()) (initial_facts ()) ${2:@rules}$0"
+            description: """
+            ルールをグループ化するためのクラス。ルールセットでグループ化されたルールはactivateアクションでアクティブにすることで実行が可能。どのグループにも属していないルールは_defaultグループに入る。
+            ルールセットの中で記述したpropertyとinitial_factsは、knowledgeの前に記述したものと区別なく扱われる。
+            
+            :param @ruleSetName ルールセット名。他のルールセットと重複してはいけない。
+            :param @rules ルールセットに属するrule。複数記述可能。
+            """
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/lang.html#3.6"
+          }
           # 'rule'
+          {
+            type: "class"
+            rightLabel: "Predefined agent class"
+            snippet: "rule \"${1:@ruleName}\" ${2:@condition_part} -> ${3:action_part}$0"
+            description: """
+            ルールを記述するためのクラス。条件部の条件をすべて満たした場合にアクション部を記述順に実行する。
+
+            :param @ruleName ルール名。他のルールと重複してはいけない。
+            :param @condition_part 条件部。
+            :param @action_part アクション部。
+            """
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/lang.html#3.7"
+          }
           # 'initial_facts'
+          {
+            type: "class"
+            rightLabel: "Predefined agent class"
+            snippet: "initial_facts ${1:@OAV}$0"
+            description: """
+            エージェント起動時に保持する情報を記述するためのクラス。情報はOAV型のデータで記述する。propertyクラスとは違い、アクションによって変更や削除が可能なファクトとなる。複数のOAV型のデータを記述する場合は、(initial_facts OAVdata1 OAVdata2 ...)のように記述する。
+
+            :param @OAV OAV型のデータ。
+            """
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/lang.html#3.5"
+          }
           # 'property'
+          {
+            type: "class"
+            rightLabel: "Predefined agent class"
+            snippet: "property ${1:@OAV}$0"
+            description: """
+            エージェント固有の情報を記述するためのクラス。情報はOAV型のデータで記述する。ここに記述された情報は変更や削除ができないファクトになる。複数のOAV型のデータを記述する場合は、(property OAVdata1 OAVdata2 ...)のように記述する。
+
+            :param @OAV OAV型のデータ。
+            """
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/lang.html#3.4"
+          }
           # 'create'
           # 'create :author \"authorName\"'
           # 'Msg'
@@ -54,7 +113,7 @@
         ]
       builtin:
         suggestions: [
-          # (3)メッセージに関するアクション
+          # (4)メッセージに関するアクション
           {
             type: "function"
             rightLabel: "Builtin action"
@@ -63,7 +122,7 @@
             メッセージを送信する。送信は次のアクションに進む前に行われる。
 
             :param @perfName パフォーマティブ 定数あるいは、これをバインドした変数・参照。
-            :param @agName 送信先のエージェント名
+            :param @agName 送信先のエージェント名。
             :param @contVar メッセージの中身 OAV型データ・リスト、あるいはこれらをバインドした変数・参照。
             """
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#send"
@@ -76,7 +135,7 @@
             メッセージmsgVarに対する返信メッセージを送信する。 送信は次のアクションに進む前に行われる。
 
             :param @perfName パフォーマティブ 定数あるいは、これをバインドした変数・参照。
-            :param @msgVar 返信するメッセージ。（(Msg...)で表現されるOAV型のデータ）
+            :param @msgVar 返信するメッセージ。（(Msg...)で表現されるOAV型のデータ）。
             :param @contVar メッセージの中身 OAV型データ・リスト、あるいはこれらをバインドした変数・参照。
             """
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#reply"
@@ -89,7 +148,7 @@
             メッセージをワークプレース上に存在するすべてのエージェントに送信する。 送信は次のアクションに進む前に行われる。
 
             :param @perfName パフォーマティブ 定数あるいは、これをバインドした変数・参照。
-            :param @depVar 送信先のワークレース（例：w1:matsumura-PC）。アクションを起こすエージェントと同じワークプレースであれば省略可能
+            :param @depVar 送信先のワークレース（例：w1:matsumura-PC）。アクションを起こすエージェントと同じワークプレースであれば省略可能。
             :param @contVar メッセージの中身 OAV型データ・リスト、あるいはこれらをバインドした変数・参照。
             """
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#broadcast"
@@ -110,8 +169,8 @@
             指定したルールセットをアクティブにする。アクティブにできるルールセットは以下の3つである。
             (1)dashファイルの中で宣言したルールセット。
             (2)includeアクションで読み込んだrsetファイル。
-            (3)_defaultルールセット。ルールセットで囲まれていないルールはすべてこのルールセットに入る
-            複数のルールセットをアクティブにするには(ruleSetVar1 ruleSetVar2...)のようにリストにする。ルールセット間の優先度はリストの記述順になる。
+            (3)_defaultルールセット。ルールセットで囲まれていないルールはすべてこのルールセットに入る。
+            複数のルールセットをアクティブにするには(ruleSetVar1 ruleSetVar2 ...)のようにリストにする。ルールセット間の優先度はリストの記述順になる。
 
             :param @ruleSetVar 活性化するルールセット名、あるいはそのリスト。
             """
@@ -125,8 +184,8 @@
             ルールセット(ファイルの拡張子が.rsetのファイル)を読みこみ利用可能にする。 読みこむファイル名はfilenameで指定する。
 
             :param @filename 読みこみ可能にするファイルのファイル名（例：Hogehoge.rset）。
-            :param @envName 読みこみ先の場所。省略可
-            :param @letter 読みこみの制御。省略可（省略した場合はエージェントがどんな環境でもルールセットを読みこみ可能にする。）
+            :param @envName 読みこみ先の場所。名前:ホスト名の形式で記述する。省略可。
+            :param @letter 読みこみの制御。省略可（省略した場合はエージェントがどんな環境でもルールセットを読みこみ可能にする）。
             """
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#include"
           }
