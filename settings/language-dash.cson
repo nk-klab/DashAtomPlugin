@@ -291,7 +291,7 @@
           {
             type: "function"
             rightLabel: "Builtin action"
-            snippet: "pup ${1:arg}$0"
+            snippet: "pop ${1:arg}$0"
             description: """
             argで指定したリストから末尾の要素を削除しそれを返す。
 
@@ -344,6 +344,56 @@
             :param @arg リスト、またはリストを表す変数・参照。
             """
             descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#size"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "sleep ${1:milliSeconds}$0"
+            description: """
+            milliSecondsで指定した時間（単位ミリ秒）だけ動作を一時停止する。
+
+            :param @milliSeconds 数値定数、またはこれをバインドした変数・参照。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#sleep"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "print ${1:arg1}$0"
+            description: """
+            指定した引数を端末とインスペクタに表示する。端末はリポジトリ/ワークプレースを起動した端末である。引数は1つ以上指定する。
+            複数の引数を指定した場合、表示される引数は空白で区切られない。端末には「エージェント名: 引数引数...」と表示される。
+            空白は\" \"。改行は\"\\n\"。
+
+            :param @arg1 定数・OAV型データ・リスト、またはこれらをバインドした変数・参照。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#print"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "settext ${1:arg1}$0"
+            description: """
+            指定した引数をエージェントモニタのアイコンの横に表示する。 引数は1つ以上指定する。
+            引数に\"\"を指定した場合、表示されなくなる。
+
+            :param @arg1 定数・OAV型データ・リスト、またはこれらをバインドした変数・参照。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#settext"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "inspect"
+            description: "インスペクタを開く。インスペクタ起動後、動作を一時停止する。"
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#inspect"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "inspect nonstop"
+            description: "インスペクタを開く。インスペクタ起動後、動作は一時停止しない。"
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#inspect"
           }
           # 'sleep'
           # 'alarm'
