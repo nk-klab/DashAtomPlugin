@@ -1,0 +1,75 @@
+'.source.dash':
+
+  # Message-related snippets
+  'condition to inspect received message and bind to variable ?msg':
+    'prefix' : 'message'
+    'body' : 'Msg :performative verifyPolicy :content ( )) = ?msg  //delete-->'
+
+  'initial message on agent startup':
+    'prefix':'initialMessage'
+    'body': 'Msg :performative __INIT_I'
+
+  'action to send broadcast message':
+    'prefix' : 'broadcast'
+    'body' : 'send :performative ${1:@perfName} :to _broadcast :content (${2:@ContentVar})'
+
+  'rule for agent startup message':
+    'prefix':'startupMessage'
+    'body': """rule startup
+			\t(Msg :performative __INIT_I) = ?msg
+			\t-->
+			\t(inspect nonstop)
+			\t(remove ?msg)\n
+      """
+
+  'rule to remove unmatched message':
+    'prefix':'removeMessage'
+    'body': """rule removemsg
+			\t(Msg :performative ?p) = ?msg
+			\t(!= ?p __INIT_C)
+			\t(!= ?p __INIT_I)
+			\t-->
+			\t(remove ?msg)\n
+      """
+
+
+  # Basic component of agent
+  'single basic rule':
+    'prefix':'rule'
+    'body': """rule ${1:ruleName}
+    	\t(${2:hogeCondition}) = ?${3:hogeVarToBind}
+    	\t-->
+    	\t(${4:hogeAction} ${5:hogeArgument})\n
+      """
+
+  'basic properties of agent':
+    'prefix':'property'
+    'body': """property
+  		\t(create :author "${1:authorName}")
+  		\t(function :word "${2:functionName}")
+  		\t(comment :text "${3:functionDescription}")\n
+      """
+
+
+  # Actions to bind returned value from nested action
+  'bind size of list to variable':
+    'prefix':'bindSize'
+    'body': 'bind ?${1:hogeVarToBind} (size ?${2:hogeListVar})'
+
+  'bind extracted list tail element to variable':
+    'prefix':'bindPop'
+    'body': 'bind ?${1:hogeVarToBind} (pop ?${2:hogeListVar})'
+
+  'bind extracted list head element to variable':
+    'prefix':'bindShift'
+    'body': 'bind ?${1:hogeVarToBind} (shift ?${2:hogeListVar})'
+
+  'bind returned value from invoked BP method':
+    'prefix':'bindControl'
+    'body': 'bind ?${1:hogeVarToBind} (control ${2:BPMethod} (${2:methodArgument}))'
+
+
+  # Other typical actions
+  'make fact of OVA format':
+    'prefix':'makeFact'
+    'body': 'make (${1:objectName} :${2:hogeAttr} ${3:hogeVal})'
