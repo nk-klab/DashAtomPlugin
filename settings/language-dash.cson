@@ -54,13 +54,7 @@
         ]
       builtin:
         suggestions: [
-          {
-            type: "function"
-            rightLabel: "Builtin action"
-            snippet: "reply :performative ${1:@perfName} :to ${2:@msgVar} :content ${3:@contVar}$0"
-            description: "メッセージMSGVARに対する返信メッセージを送信する。 送信は次のアクションに進む前に行われる。"
-            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#reply"
-          }
+          # (3)メッセージに関するアクション
           {
             type: "function"
             rightLabel: "Builtin action"
@@ -73,6 +67,39 @@
             :param @contVar メッセージの中身 OAV型データ・リスト、あるいはこれらをバインドした変数・参照。
             """
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#send"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "reply :performative ${1:@perfName} :to ${2:@msgVar} :content ${3:@contVar}$0"
+            description: """
+            メッセージmsgVarに対する返信メッセージを送信する。 送信は次のアクションに進む前に行われる。
+
+            :param @perfName パフォーマティブ 定数あるいは、これをバインドした変数・参照。
+            :param @msgVar 返信するメッセージ。((Msg...)で表現されるOAV型のデータ)
+            :param @contVar メッセージの中身 OAV型データ・リスト、あるいはこれらをバインドした変数・参照。
+            """
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#reply"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "broadcast :performative ${1:@perfName} :departure ?depVar :content ${3:@contVar}$0"
+            description: """
+            メッセージをワークプレース上に存在するすべてのエージェントに送信する。 送信は次のアクションに進む前に行われる。
+
+            :param @perfName パフォーマティブ 定数あるいは、これをバインドした変数・参照。
+            :param @depVar 送信先のワークレース（例：w1:matsumura-PC）。アクションを起こすエージェントと同じワークプレースであれば省略可能
+            :param @contVar メッセージの中身 OAV型データ・リスト、あるいはこれらをバインドした変数・参照。
+            """
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#broadcast"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "fetchall$0"
+            description: "メッセージキューにあるすべてのメッセージをファクトとしてワーキングメモリに生成する。"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#fetchall"
           }
           {
             type: "function"
