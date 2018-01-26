@@ -176,35 +176,105 @@
           {
             type: "function"
             rightLabel: "Builtin action"
-            snippet: "delete ${1:objName}$0"
+            snippet: "delete ${1:obj}$0"
             description: """
-            objNameで指定したオブジェクト名のファクトをすべて消す。
+            objで指定したオブジェクト名のファクトをすべて消す。
 
-            :param @objName 定数、または定数をバインドした変数・参照。
+            :param @obj 定数、または定数をバインドした変数・参照。
             """
             descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#delete"
           }
           {
             type: "function"
             rightLabel: "Builtin action"
-            snippet: "pack ${1:objName}$0"
+            snippet: "pack ${1:obj}$0"
             description: """
-            objNameで指定したオブジェクト名のファクトの集合をリストにして返す。
+            objで指定したオブジェクト名のファクトの集合をリストにして返す。
 
-            :param @objName 定数、または定数をバインドした変数・参照。
+            :param @obj 定数、または定数をバインドした変数・参照。
             """
             descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#pack"
           }
           {
             type: "function"
             rightLabel: "Builtin action"
-            snippet: "expand ${1:listName}$0"
+            snippet: "expand ${1:list}$0"
             description: """
-            listNameで指定したリストの要素をファクトとしてワーキングメモリに展開する。リストの要素はOAVデータでなければならない。
+            listで指定したリストの要素をファクトとしてワーキングメモリに展開する。リストの要素はOAVデータでなければならない。
 
-            :param @listName OAVデータを要素に持つリスト、またはこれをバインドした変数。
+            :param @list OAVデータを要素に持つリスト、またはこれをバインドした変数。
             """
             descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#expand"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "bind ?${1:varName} ${2:value}$0"
+            description: """
+            変数?varNameに値valueをバインドする。valueには、定数などの他にアクションを記述することもできる。
+            アクションを記述した場合、?varNameにはアクションの実行結果がバインドされる。
+            すでに値のバインドされている変数に再バインドすることはできない。(bindより前に記述してある変数にはバインドできない。)
+
+            :param @varName 変数名。
+            :param @value 定数・OAV型データ・リスト、これらをバインドした変数・参照、または返値をもつアクション。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#bind"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "current-time"
+            description: "現在の時刻を返す。（返値の例：\"12:34:56\"）"
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#current-time"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "exists"
+            description: """
+            エージェントが同じ環境に存在しているかどうかを調べる。
+            存在する場合TRUEを、存在しない場合FALSEを返す。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#exists"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "- ${1:@Argument1} ${2:@Argument2}}$0"
+            description: "差を求める。 数値はdoubleではなく大きい10進数(java.math.BigDecimal)で計算される。"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#op"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "* ${1:@Argument1} ${2:@Argument2}}$0"
+            description: "積を求める。 数値はdoubleではなく大きい10進数(java.math.BigDecimal)で計算される。"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#op"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "/ ${1:@Argument1} ${2:@Argument2}}$0"
+            description: "商を求める。 数値はdoubleではなく大きい10進数(java.math.BigDecimal)で計算される。"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#op"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "% ${1:@Argument1} ${2:@Argument2}}$0"
+            description: "剰余を求める。 数値はdoubleではなく大きい10進数(java.math.BigDecimal)で計算される。"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#op"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "toString ${1:arg}"
+            description: """
+            argで指定したOAV型データまたはリストの文字列表現を返す。
+
+            :param @arg OAV型データまたはリストをバインドした変数・参照。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#toString"
           }
           # 'sleep'
           # 'alarm'
