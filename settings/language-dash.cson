@@ -36,8 +36,14 @@
           {
             type: "class"
             rightLabel: "Predefined agent class"
-            snippet: "comment  :text \"${1:@comment}\"$0"
-            description: "ネームサーバでlookupコマンド利用してエージェントを検索する際のエージェントのコメント情報の定義．コメント: エージェントのコメントが、 comment-textで指定した文字列を含む場合にマッチする (機能名は、(property ..)内の(comment :text ...)で指定する)。"
+            snippet: "comment  :text \"${1:@functionDescription}\"$0"
+            description: """
+            ネームサーバでlookupコマンド利用してエージェントを検索する際のエージェントのコメント情報の定義．
+            コメント: エージェントのコメントが、 comment-textで指定した文字列を含む場合にマッチする (機能名は、(property ..)内の(comment :text ...)で指定する)。
+
+
+            :param @functionDescription エージェントの機能の説明の文字列
+            """
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#lookup"
           }
           # 'agent'
@@ -47,7 +53,8 @@
             rightLabel: "Predefined agent class"
             snippet: "knowledge ${1:@rules}$0"
             description: """
-            すべてのエージェントが持つルールセット。ここに記述されたルールは"_delaut"という名前のルールセットに属することになる。また、エージェント起動時にアクティブになっているルールセットでもある。
+            すべてのエージェントが持つルールセット。ここに記述されたルールは"_delaut"という名前のルールセットに属することになる。
+            また、エージェント起動時にアクティブになっているルールセットでもある。
 
             :param @rules ルールセットに属するrule。複数記述可能。
             """
@@ -88,7 +95,9 @@
             rightLabel: "Predefined agent class"
             snippet: "initial_facts ${1:@OAV}$0"
             description: """
-            エージェント起動時に保持する情報を記述するためのクラス。情報はOAV型のデータで記述する。propertyクラスとは違い、アクションによって変更や削除が可能なファクトとなる。複数のOAV型のデータを記述する場合は、(initial_facts OAVdata1 OAVdata2 ...)のように記述する。
+            エージェント起動時に保持する情報を記述するためのクラス。情報はOAV型のデータで記述する。
+            propertyクラスとは違い、アクションによって変更や削除が可能なファクトとなる。
+            複数のOAV型のデータを記述する場合は、(initial_facts OAVdata1 OAVdata2 ...)のように記述する。
 
             :param @OAV OAV型のデータ。
             """
@@ -100,7 +109,9 @@
             rightLabel: "Predefined agent class"
             snippet: "property ${1:@OAV}$0"
             description: """
-            エージェント固有の情報を記述するためのクラス。情報はOAV型のデータで記述する。ここに記述された情報は変更や削除ができないファクトになる。複数のOAV型のデータを記述する場合は、(property OAVdata1 OAVdata2 ...)のように記述する。
+            エージェント固有の情報を記述するためのクラス。情報はOAV型のデータで記述する。
+            ここに記述された情報は変更や削除ができないファクトになる。
+            複数のOAV型のデータを記述する場合は、(property OAVdata1 OAVdata2 ...)のように記述する。
 
             :param @OAV OAV型のデータ。
             """
@@ -185,7 +196,7 @@
             ルールセット(ファイルの拡張子が.rsetのファイル)を読みこみ利用可能にする。 読みこむファイル名はfilenameで指定する。
 
             :param @filename 読みこみ可能にするファイルのファイル名（例：Hogehoge.rset）。
-            :param @envName 読みこみ先の場所。名前:ホスト名の形式で記述する。省略可。
+            :param @envName 読みこみ先の場所。名前:ホスト名の形式で記述する。（例：w1:matsumura-PC）省略可。
             :param @letter 読みこみの制御。省略可（省略した場合はエージェントがどんな環境でもルールセットを読みこみ可能にする）。
             """
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#include"
