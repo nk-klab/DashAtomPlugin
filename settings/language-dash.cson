@@ -5,9 +5,7 @@
     decreaseIndentPattern: '^\\s*\\)\\s*$'
     foldEndPattern: '(\\*/|^\\s*\\))'
     unIndentedLinePattern: '^\\s*((/\\*|\\*/\\s*$|//).*)?$'
-    # increaseIndentPattern: '^.*\\([^\\)]*\\)*\\s*$'
-    # decreaseIndentPattern: '^\\s*\\)'
-    # nonWordCharacters: '/\\()"\':,.;<>~!#^&*|=[]{}`?'
+
   autocomplete:
     symbols:
       class:
@@ -16,14 +14,23 @@
             type: "class"
             rightLabel: "Predefined agent class"
             snippet: "agent ${1:@AgentName}$0"
-            description: "エージェント一体のクラス"
+            description: """
+            エージェント一体のクラス
+
+            :param AgentName エージェントの名前 （dashファイルの名前と一致する必要あり）
+            """
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/lang.html#3.1"
           }
           {
             type: "class"
             rightLabel: "Predefined agent class"
             snippet: "function :word \"${1:@functionName}\"$0"
-            description: "ネームサーバでlookupコマンド利用してエージェントを検索する際のエージェントが持つ機能情報の定義．  エージェントの機能名が、 function-wordで指定した文字列を含む場合にマッチする (機能名は、(property ..)内の(funciton :word ...)で指定する)。"
+            description: """
+            ネームサーバでlookupコマンド利用してエージェントを検索する際のエージェントが持つ機能情報の定義．
+            エージェントの機能名が、 function-wordで指定した文字列を含む場合にマッチする (機能名は、(property ..)内の(funciton :word ...)で指定する)。
+
+            :param @functionName エージェントの機能名の文字列
+            """
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#lookup"
           }
           {
@@ -50,18 +57,23 @@
           {
             type: "function"
             rightLabel: "Builtin action"
-            snippet: "reply :performative ${1:@PERFNAME} :to ${2:@MSGVAR} :content (${3:@content})$0"
+            snippet: "reply :performative ${1:@perfName} :to ${2:@msgVar} :content ${3:@contVar}$0"
             description: "メッセージMSGVARに対する返信メッセージを送信する。 送信は次のアクションに進む前に行われる。"
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#reply"
           }
           {
             type: "function"
             rightLabel: "Builtin action"
-            snippet: "send :performative ${1:@PERFNAME} :to ${2:@MSGVAR} :content (${3:@content})$0"
-            description: "メッセージを送信する。送信は次のアクションに進む前に行われる。"
+            snippet: "send :performative ${1:@perfName} :to ${2:@agName} :content (${3:@contVar})$0"
+            description: """
+            メッセージを送信する。送信は次のアクションに進む前に行われる。
+
+            :param @perfName パフォーマティブ 定数あるいは、これをバインドした変数・参照。
+            :param @agName 送信先のエージェント名
+            :param @contVar メッセージの中身 OAV型データ・リスト、あるいはこれらをバインドした変数・参照。
+            """
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#send"
           }
-
           {
             type: "function"
             rightLabel: "Builtin action"
