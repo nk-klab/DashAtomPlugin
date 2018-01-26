@@ -268,13 +268,82 @@
           {
             type: "function"
             rightLabel: "Builtin action"
-            snippet: "toString ${1:arg}"
+            snippet: "toString ${1:arg}$0"
             description: """
             argで指定したOAV型データまたはリストの文字列表現を返す。
 
             :param @arg OAV型データまたはリストをバインドした変数・参照。
             """
             descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#toString"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "push ${1:value} ${2:arg}$0"
+            description: """
+            argで指定したリストの末尾に要素valueを追加する。
+
+            :param @value 定数・OAV型データ・リスト、またはこれらをバインドした変数・参照。
+            :param @arg リストをバインドした変数・参照。ただし、変数や参照が(property ..)のファクトを直接にバインドしている場合、このアクションは実行できない。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#push"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "pup ${1:arg}$0"
+            description: """
+            argで指定したリストから末尾の要素を削除しそれを返す。
+
+            :param @arg リストをバインドした変数・参照。ただし、変数や参照が(property ..)のファクトを直接にバインドしている場合、このアクションは実行できない。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#pop"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "unshift ${1:value} ${2:arg}$0"
+            description: """
+            argで指定したリストの先頭に要素valueを追加する。
+
+            :param @value 定数・OAV型データ・リスト、またはこれらをバインドした変数・参照。
+            :param @arg リストをバインドした変数・参照。ただし、変数や参照が(property ..)のファクトを直接にバインドしている場合、このアクションは実行できない。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#unshift"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "shift ${1:arg}$0"
+            description: """
+            argで指定したリストから先頭の要素を削除しそれを返す。
+
+            :param @arg リストをバインドした変数・参照。ただし、変数や参照が(property ..)のファクトを直接にバインドしている場合、このアクションは実行できない。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#shift"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "append ${1:arg1} ${2:arg2}$0"
+            description: """
+            リストarg1とarg2の要素を持つリストを作成しそれを返す。
+
+            :param @arg1 リスト、またはリストをバインドした変数・参照。
+            :param @arg2 リスト、またはリストをバインドした変数・参照。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#append"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "size ${1:arg}$0"
+            description: """
+            リストargの要素数を返す。0ならばそのリストは空である。
+
+            :param @arg リスト、またはリストを表す変数・参照。
+            """
+            descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#size"
           }
           # 'sleep'
           # 'alarm'
