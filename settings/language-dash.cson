@@ -10,6 +10,7 @@
     symbols:
       class:
         suggestions: [
+          # 'agent'
           {
             type: "class"
             rightLabel: "Predefined agent class"
@@ -46,7 +47,6 @@
             """
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#lookup"
           }
-          # 'agent'
           # 'knowledge'
           {
             type: "class"
@@ -117,11 +117,6 @@
             """
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/lang.html#3.4"
           }
-          # 'create'
-          # 'create :author \"authorName\"'
-          # 'Msg'
-          # 'Msg :performative perfName :content ()'
-          # 'rule ruleName\n\t\t(condition)\n\t\t-->\n\t\t(action)\n'
         ]
       builtin:
         suggestions: [
@@ -232,7 +227,7 @@
           {
             type: "function"
             rightLabel: "Builtin action"
-            snippet: "+ {1:@Argument1} ${2:@Argument2}$0"
+            snippet: "\+ {1:@Argument1} ${2:@Argument2}$0"
             description: "和を求める。 数値はdoubleではなく大きい10進数(java.math.BigDecimal)で計算される。"
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#op"
           }
@@ -268,28 +263,28 @@
           {
             type: "function"
             rightLabel: "Builtin action"
-            snippet: "modify ?${1:varName}:${2:attrName} ${3:value}$0"
+            snippet: "modify ?${1:varToModify}:${2:attrToModify} ${3:newValue}$0"
             description: """
-            varNameにバインドしたファクトの属性名attrNameをvalueにする。変数にはファクトをルール条件部でバインドしておく。値がファクトの場合、そのファクトは識別番号が更新され、新しさが最新になる。
-            ?varName:attrNameで指定した属性がない場合は変更できない。
+            varToModifyにバインドしたファクトの属性名attrToModifyをnewValueに書き換える。変数にはファクトをルール条件部でバインドしておく。値がファクトの場合、そのファクトは識別番号が更新され、新しさが最新になる。
+            ?varToModify:attrToModifyで指定した属性がない場合は変更できない。
 
-            :param @varName ファクトをバインドした変数名。
-            :param @attrName ファクトの属性名。
-            :param @value 定数・OAV型データ・リスト。またはこれらをバインドした変数・参照。
+            :param @varToModify 書き換えたいファクトをバインドした変数
+            :param @attrToModify 書き換える属性
+            :param @newValue 書き換える新しい値 定数・OAV型データ・リスト。またはこれらをバインドした変数・参照。
             """
             descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#modify"
           }
           {
             type: "function"
             rightLabel: "Builtin action"
-            snippet: "Modify ?${1:varName}:${2:attrName} ${3:value}$0"
+            snippet: "Modify ?${1:varToModify}:${2:attrToModify} ${3:newValue}$0"
             description: """
-            varNameにバインドしたファクトの属性名attrNameをvalueにする。変数にはファクトをルール条件部でバインドしておく。値がファクトの場合、そのファクトは識別番号が更新され、新しさが最新になる。
-            ?varName:attrNameで指定した属性がない場合は、新たに属性attrNameをファクトに加え、その値をvalueにする。
+            varToModifyにバインドしたファクトの属性名attrToModifyをnewValueに書き換える。変数にはファクトをルール条件部でバインドしておく。値がファクトの場合、そのファクトは識別番号が更新され、新しさが最新になる。
+            ?varToModify:attrToModifyで指定した属性がない場合は、新たに属性attrToModifyをファクトに加え、その値をnewValueにする。
 
-            :param @varName ファクトをバインドした変数名。
-            :param @attrName ファクトの属性名。
-            :param @value 定数・OAV型データ・リスト。またはこれらをバインドした変数・参照。
+            :param @varToModify 書き換えたいファクトをバインドした変数
+            :param @attrToModify 書き換える属性
+            :param @newValue 書き換える新しい値 定数・OAV型データ・リスト。またはこれらをバインドした変数・参照。
             """
             descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#modify"
           }
@@ -300,7 +295,7 @@
             description: """
             objで指定したオブジェクト名のファクトをすべて消す。
 
-            :param @obj 定数、または定数をバインドした変数・参照。
+            :param @obj 削除するオブジェクト 定数、または定数をバインドした変数・参照。
             """
             descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#delete"
           }
@@ -311,7 +306,7 @@
             description: """
             objで指定したオブジェクト名のファクトの集合をリストにして返す。
 
-            :param @obj 定数、または定数をバインドした変数・参照。
+            :param @obj リストにするオブジェクト 定数、または定数をバインドした変数・参照。
             """
             descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#pack"
           }
@@ -322,7 +317,7 @@
             description: """
             listで指定したリストの要素をファクトとしてワーキングメモリに展開する。リストの要素はOAVデータでなければならない。
 
-            :param @list OAVデータを要素に持つリスト、またはこれをバインドした変数。
+            :param @list ファクトとして展開するリスト OAVデータを要素に持つリスト、またはこれをバインドした変数。
             """
             descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#expand"
           }
@@ -515,64 +510,6 @@
             description: "インスペクタを開く。インスペクタ起動後、動作は一時停止しない。"
             descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#inspect"
           }
-          # 'sleep'
-          # 'alarm'
-          # 'print'
-          # 'settext'
-          # 'inspect'
-          # 'inspect nonstop'
-          # 'loadBP'
-          # 'startBP'
-          # 'control'
-          # 'method'
-          # 'terminate'
-          # 'move'
-          # 'instantiate'
-          # 'activate'
-          # 'print'
-          # 'make'
-          # 'modify'
-          # 'Modify'
-          # 'make'
-          # 'Make'
-          # 'remove'
-          # 'removeall'
-          # 'delete'
-          # 'pack'
-          # 'expand'
-          # 'bind'
-          # 'bind ?var value'
-          # 'current-time'
-          # 'exists'
-          # 'lookup'
-          # 'toString'
-          # 'pop'
-          # 'push'
-          # 'unshift'
-          # 'shift'
-          # 'append'
-          # 'size'
-          # 'broadcast'
-          # 'fetchall'
-          # 'reply'
-          # 'make (FACTNAME :attr VALUE)'
-          # 'remove ?var'
-          # 'modify ?var:attr NEWVALUE'
-          # 'delete FACTNAME'
-          # 'bind ?var VALUE'
-          # '+ arg1 arg2'
-          # '\- arg1 arg2'
-          # '\* arg1 arg2'
-          # '/ arg1 arg2'
-          # '% arg1 arg2'
-          # 'push value ?arg'
-          # 'pop ?arg'
-          # 'loadBP CLASSNAME'
-          # 'control METHODNAME (ARG)'
-          # 'alarm :every MSEC :contentnt ()'
-          # 'alarm :cancel ALARMID'
-          # 'instantiate :into workplace :facts factlist'
-          # 'instantiate :from repository :name agent :facts factlist'
         ]
       constant:
         suggestions: [
