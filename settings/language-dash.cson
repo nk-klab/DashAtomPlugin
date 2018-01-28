@@ -64,7 +64,7 @@
           {
             type: "class"
             rightLabel: "Predefined agent class"
-            snippet: "rule-set \"${1:@ruleSetName}\"\n\t(property ())\n\t(initial_facts ())\n\t${2:@rules}\n$0"
+            snippet: "rule-set \"${1:@ruleSetName}\" (property ()) (initial_facts ()) ${2:@rules}$0"
             description: """
             ルールをグループ化するためのクラス。ルールセットでグループ化されたルールはactivateアクションでアクティブにすることで実行が可能。
             どのグループにも属していないルールは_defaultグループに入る。
@@ -79,7 +79,7 @@
           {
             type: "class"
             rightLabel: "Predefined agent class"
-            snippet: "rule \"${1:@ruleName}\"\n\t${2:@condition_part}\n\t->\n\t${3:action_part}$0"
+            snippet: "rule \"${1:@ruleName}\" ${2:@condition_part} -> ${3:action_part}$0"
             description: """
             ルールを記述するためのクラス。条件部の条件をすべて満たした場合にアクション部を記述順に実行する。
 
