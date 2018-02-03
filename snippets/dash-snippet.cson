@@ -42,6 +42,15 @@
     	\t(${4:hogeAction} ${5:hogeArgument})\n
       """
 
+  'single rule set':
+    'prefix':'rule-set'
+    'body': """rule-set {1:@ruleSetName}
+  		\t(property ())
+  		\t(initial_facts ())
+  		\t(${2:@rules})
+      """
+
+
   'basic properties of agent':
     'prefix':'property'
     'body': """property

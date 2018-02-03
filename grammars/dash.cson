@@ -7,7 +7,7 @@
 'patterns': [
 
   { # Block Comment
-    'match': '/\\*.+?\\*/'
+    'match': '/\\*.*\\*/'
     'name': 'comment.block'
   }
   { # Comment line
