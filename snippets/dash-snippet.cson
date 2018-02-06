@@ -82,3 +82,12 @@
   'make fact of OVA format':
     'prefix':'makeFact'
     'body': 'make (${1:objectName} :${2:hogeAttr} ${3:hogeVal})'
+
+  # comment
+  'separator comment':
+    'prefix':'comment'
+    'body': """
+  		//-----------------------------------------
+  		//          ${1:comment Content}
+  		//-----------------------------------------
+      """
