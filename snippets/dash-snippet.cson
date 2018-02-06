@@ -77,6 +77,10 @@
     'prefix':'bindControl'
     'body': 'bind ?${1:hogeVarToBind} (control ${2:BPMethod} (${2:methodArgument}))'
 
+  'bind current time':
+    'prefix':'bindTime'
+    'body': 'bind ?${1:hogeVarToBind} (current-time))'
+
 
   # Other typical actions
   'make fact of OVA format':
