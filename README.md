@@ -7,6 +7,6 @@
 - OAV形式のカッコに対応した折りたたみ
 
 ## 関連Wikiページ
-- 機能詳細は[Wikiページ](./wiki/Home)
-- 導入手順は[インストール方法](./wiki/Installation)参照
-- カスタマイズしたい方は[設定について](./wiki/Develop)参照
+- 機能詳細は[Wikiページ](https://github.com/nk-klab/DashAtomPlugin/wiki)
+- 導入手順は[インストール方法](https://github.com/nk-klab/DashAtomPlugin/wiki/Installation)参照
+- カスタマイズしたい方は[設定について](https://github.com/nk-klab/DashAtomPlugin/wiki/Develop)参照

@@ -2,7 +2,7 @@
   "name": "language-dash",
   "main": "./lib/language-dash",
   "version": "0.12.0",
-  "description": "The package for highlight and code completion function customized to DASH agent framework",
+  "description": "The highlight and code completion plugin customized to DASH agent framework",
   "keywords": [],
   "activationCommands": {
     "atom-workspace": "language-dash:toggle"
