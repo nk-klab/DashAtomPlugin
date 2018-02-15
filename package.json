@@ -1,7 +1,7 @@
 {
   "name": "language-dash",
   "main": "./lib/language-dash",
-  "version": "0.10.1",
+  "version": "0.11.0",
   "description": "The package to highlight and code completion for DASH agent",
   "keywords": [],
   "activationCommands": {
