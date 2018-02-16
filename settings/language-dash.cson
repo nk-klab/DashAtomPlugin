@@ -227,6 +227,34 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            snippet: "alarm :every ${1:@milliSeconds} :content (${2:@content})$0"
+            description: "指定した時間milliSeconds(単位msec)後にファクトを生成し、 以降、milliSecondsおきにファクトを生成する。"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#alarm"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "alarm :cancel all$0"
+            description: "全てのalarmを解除する"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#alarm"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "alarm :cancel ${1:@id}$0"
+            description: "該当するalarmアクションの実行を解除する(ファクトが生成されなくなる)。 指定したアラームIDを持つアラームが登録されていない場合、何もしない。idに\"all\"と指定すると、全てのアラームが解除される。"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#alarm"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
+            snippet: "alarm :cancel all$0"
+            description: "全てのalarm指定を解除する"
+            descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#alarm"
+          }
+          {
+            type: "function"
+            rightLabel: "Builtin action"
             snippet: "\+ {1:@Argument1} ${2:@Argument2}$0"
             description: "和を求める。 数値はdoubleではなく大きい10進数(java.math.BigDecimal)で計算される。"
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#op"
