@@ -15,23 +15,43 @@
     'name': 'comment.line.double-slash'
   }
   {
-    'match': '(?<=\\s)([1-9]+)(?=[\\)\\s])'
+    'match': '(?<=\\s)(\\-?\\d+)(?=[\\)\\s])'
     'name': 'constant.numeric.integer'
+  }
+  {
+    'match': '(?<=\\s)(\\-?\\d+\\.\\d+)(?=[\\)\\s])'
+    'name': 'constant.numeric'
   }
   { # String quoted by double-quotation
     'match': '(\".*?\")'
     'name': 'string.quoted.double'
   }
   { # Attribute of OVA format data
-    'match': '(?<=:)[\\w\\-]+'
+    'match': '(?<=:)[\\w\\-]+(?=\\s)'
     'name': 'entity.name.type'
   }
   { # Variable
-    'match': '(?<=\\?)[\\w\\-]+'
+    'match': '(?<=\\?)[\\w\\-]+(?=[\\)\\s])'
+    'name': 'variable'
+  }
+  { # Variable combined with attribute
+    'match': '(?<=\\?)[\\w\\-]+(?=\\:[\\w\\-]+\\s)'
     'name': 'variable'
   }
   { # Reserved Constant
-    'match': '(?<=\\s)(__INIT_I|__INIT_C|__Event|__Alarm|_broadcast|_default)(?=[\\)\\s])'
+    'match': '(?<=\\s)(__INIT_I|__INIT_C|__INIT_R|__Event|__Alarm|_broadcast|_default)(?=[\\)\\s])'
+    'name': 'support.constant'
+  }
+  { # Reserved Constant for inspect action
+    'match': '(?<=inspect\\s)(nonstop)(?=\\))'
+    'name': 'support.constant'
+  }
+  { # Reserved Constant for terminate action
+    'match': '(?<=terminate\\s:at\\s)(now)(?=\\))'
+    'name': 'support.constant'
+  }
+  { # Reserved Constant for alarm action
+    'match': '(?<=alarm\\s:cancel\\s)(all)(?=\\))'
     'name': 'support.constant'
   }
   { # Operator defined in dash
