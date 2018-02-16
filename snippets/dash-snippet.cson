@@ -3,18 +3,40 @@
   # Message-related snippets
   'condition to inspect received message and bind to variable ?msg':
     'prefix' : 'message'
-    'body' : 'Msg :performative verifyPolicy :content ( )) = ?msg  //delete-->'
+    'body' : 'Msg :performative ${1:@perfName} :content (${2:@contentVariable})) = ?msg  //delete-->'
 
   'initial message on agent startup':
     'prefix':'initialMessage'
     'body': 'Msg :performative __INIT_I'
 
+  'alarm message sent by agent':
+    'prefix':'alarmMessage'
+    'body': 'Msg :performative __Alarm :from ${1:@alarmID} :content (${2:@contentVariable})'
+
   'action to send broadcast message':
     'prefix' : 'broadcast'
     'body' : 'send :performative ${1:@perfName} :to _broadcast :content (${2:@ContentVar})'
 
+  'action to send message to other environment':
+    'prefix' : 'sendOtherEnv'
+    'body' : 'send :performative ${1:@perfName} :to _broadcast :arrival \"w1:${2:@HostNameOrIPAddr}\" :content (${3:@ContentVar})'
+
+  'action to send message with long contents':
+    'prefix':'sendLongContents'
+    'body': """send
+			\t:performative ${1:@perfName}
+			\t:to ${2:@destAg}
+			\t:arrival ${3:@destEnv}
+			\t:content
+      \t\t(${4:@objectName}
+			\t\t\t:${5:@attr1} ?${6:@val1}
+			\t\t\t:${7:@attr2} ?${8:@val2}
+			\t\t\t:${9:@attr3} ?${10:@val3}
+			\t\t)\n
+      """
+
   'rule for agent startup message':
-    'prefix':'startupMessage'
+    'prefix':'startupRule'
     'body': """rule startup
 			\t(Msg :performative __INIT_I) = ?msg
 			\t-->
@@ -22,12 +44,25 @@
 			\t(remove ?msg)\n
       """
 
+  'rule for agent startup message with invoke of base-process':
+    'prefix':'startupBPRule'
+    'body': """rule startup
+			\t(Msg :performative __INIT_I) = ?msg
+			\t-->
+      \t(loadBP ${1:@bpClassPath})
+			\t(startBP)
+			\t(inspect nonstop)
+			\t(remove ?msg)\n
+      """
+
+
   'rule to remove unmatched message':
-    'prefix':'removeMessage'
+    'prefix':'removeMessageRule'
     'body': """rule removemsg
 			\t(Msg :performative ?p) = ?msg
 			\t(!= ?p __INIT_C)
 			\t(!= ?p __INIT_I)
+      \t(!= ?p ${1:originalPerfName})
 			\t-->
 			\t(remove ?msg)\n
       """
@@ -81,17 +116,31 @@
     'prefix':'bindTime'
     'body': 'bind ?${1:hogeVarToBind} (current-time))'
 
+  'bind searched agent by lookup command':
+    'prefix':'bindLookup'
+    'body': 'bind ?${1:hogeVarToBindAgent} (lookup :function "${2:functionName}"))'
 
   # Other typical actions
-  'make fact of OVA format':
+  'make fact of OAV format':
     'prefix':'makeFact'
-    'body': 'make (${1:objectName} :${2:hogeAttr} ${3:hogeVal})'
+    'body': 'make (${1:objectName} :${2:hogeAttr} ${3:hogeValue})'
 
+
+  'action to print variable for debug':
+    'prefix' : 'printVariable'
+    'body' : 'print \"${1:@printTxt}\" ?${2:@printVar}'
+
+  # Other typical conditions
+  'condition with checking list size':
+    'prefix':'checkListSize'
+    'body': """(bind ?${1:@sizeVar} (size ?${1:@listVar}))
+			(== ?${1:@sizeVar} ${4:@value})\n
+      """
   # comment
   'separator comment':
     'prefix':'comment'
     'body': """
   		//-----------------------------------------
-  		//          ${1:comment Content}
+  		//   ${1:comment Content}
   		//-----------------------------------------
       """
