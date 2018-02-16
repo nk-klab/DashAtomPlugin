@@ -1,25 +1,23 @@
 {
   "name": "language-dash",
   "main": "./lib/language-dash",
-  "version": "0.2.0",
-  "description": "The package to highlight and suggest DASH agent source code",
-  "keywords": [
-  ],
+  "version": "0.13.0",
+  "description": "The highlight and code completion plugin customized to DASH agent framework",
+  "keywords": [],
   "activationCommands": {
     "atom-workspace": "language-dash:toggle"
   },
-  "repository": "http://gitbucket.k-in.riec.tohoku.ac.jp/gitbucket/kadowaki/DashAtomPlugin",
+  "repository": "https://github.com/nkriri/DashAtomPlugin",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
   "providedServices": {
-   "autocomplete.provider": {
-     "versions": {
-       "3.0.0": "getProviders"
-     }
-   }
- },
-  "dependencies": {
-  }
+    "autocomplete.provider": {
+      "versions": {
+        "3.0.0": "getProviders"
+      }
+    }
+  },
+  "dependencies": {}
 }
