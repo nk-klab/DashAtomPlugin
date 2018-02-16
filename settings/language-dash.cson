@@ -9,6 +9,8 @@
   autocomplete:
     symbols:
       class:
+        selector: '.class, support.class'
+        typePriority: 5
         suggestions: [
           # 'agent'
           {
@@ -118,13 +120,17 @@
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/lang.html#3.4"
           }
         ]
-      builtin:
+      function:
+        selector: '.function, support.function'
+        typePriority: 4
         suggestions: [
           # (4)メッセージに関するアクション
           {
             type: "function"
             rightLabel: "Builtin action"
-            snippet: "send :performative ${1:@perfName} :to ${2:@agName} :content (${3:@contVar})$0"
+            text: "send"
+            replacementPrefix: "send"
+            snippet: "send :performative ${1:@perfName} :to ${2:@agName} :content (${3:@contVar})"
             description: """
             メッセージを送信する。送信は次のアクションに進む前に行われる。
 
@@ -137,7 +143,9 @@
           {
             type: "function"
             rightLabel: "Builtin action"
-            snippet: "reply :performative ${1:@perfName} :to ${2:@msgVar} :content ${3:@contVar}$0"
+            text: "reply"
+            replacementPrefix: "reply"
+            snippet: "reply :performative ${1:@perfName} :to ${2:@msgVar} :content ${3:@contVar}"
             description: """
             メッセージmsgVarに対する返信メッセージを送信する。 送信は次のアクションに進む前に行われる。
 
@@ -150,7 +158,9 @@
           {
             type: "function"
             rightLabel: "Builtin action"
-            snippet: "broadcast :performative ${1:@perfName} :departure ${2:@depVar} :content ${3:@contVar}$0"
+            text: "broad"
+            replacementPrefix: "broad"
+            snippet: "broadcast :performative ${1:@perfName} :departure ${2:@depVar} :content ${3:@contVar}"
             description: """
             メッセージをワークプレース上に存在するすべてのエージェントに送信する。 送信は次のアクションに進む前に行われる。
 
@@ -163,6 +173,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "fetchall"
+            replacementPrefix: "fetch"
             snippet: "fetchall$0"
             description: "メッセージキューにあるすべてのメッセージをファクトとしてワーキングメモリに生成する。"
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#fetchall"
@@ -171,6 +183,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "activate"
+            # replacementPrefix: "act"
             snippet: "activate ${1:@ruleSetVar}$0"
             description: """
             指定したルールセットをアクティブにする。アクティブにできるルールセットは以下の3つである。
@@ -186,6 +200,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "include"
+            # replacementPrefix: "inc"
             snippet: "include :file ${1:@filename} :from ${2:@envName} :when ${2:@letter}$0"
             description: """
             ルールセット(ファイルの拡張子が.rsetのファイル)を読みこみ利用可能にする。 読みこむファイル名はfilenameで指定する。
@@ -199,6 +215,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "lookup"
+            replacementPrefix: "look"
             snippet: "lookup :name ${1:@AgentName} :environment ${2:@envName}$0"
             description: "指定した条件にマッチするエージェント名を返す。 lookupを実行すると、エージェントはネームサーバに問い合わせを行う。 そのため、ネームサーバを使わない場合にはlookupを使うことはできない。"
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#lookup"
@@ -206,6 +224,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "lookup"
+            replacementPrefix: "look"
             snippet: "lookup :name ${1:@AgentName} :environment ${2:@envName} :type ${3:@typeName}$0"
             description: "指定した条件にマッチするエージェント名を返す。 lookupを実行すると、エージェントはネームサーバに問い合わせを行う。 そのため、ネームサーバを使わない場合にはlookupを使うことはできない。"
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#lookup"
@@ -213,6 +233,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "alarm"
+            # replacementPrefix: "ala"
             snippet: "alarm :at ${1:@time} :content (${2:@content})$0"
             description: "時刻\"HH:MM:SS\"という形式で指定した時間にcontentのファクトを生成"
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#alarm"
@@ -220,6 +242,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "alarm"
+            # replacementPrefix: "ala"
             snippet: "alarm :after ${1:@milliSeconds} :content (${2:@content})$0"
             description: "指定した時間(単位msec)後にファクトを生成する。"
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#alarm"
@@ -227,6 +251,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "alarm"
+            # replacementPrefix: "ala"
             snippet: "alarm :every ${1:@milliSeconds} :content (${2:@content})$0"
             description: "指定した時間milliSeconds(単位msec)後にファクトを生成し、 以降、milliSecondsおきにファクトを生成する。"
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#alarm"
@@ -234,6 +260,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "alarm"
+            # replacementPrefix: "ala"
             snippet: "alarm :cancel all$0"
             description: "全てのalarmを解除する"
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#alarm"
@@ -241,6 +269,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "alarm"
+            # replacementPrefix: "ala"
             snippet: "alarm :cancel ${1:@id}$0"
             description: "該当するalarmアクションの実行を解除する(ファクトが生成されなくなる)。 指定したアラームIDを持つアラームが登録されていない場合、何もしない。idに\"all\"と指定すると、全てのアラームが解除される。"
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#alarm"
@@ -248,6 +278,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "alarm"
+            # replacementPrefix: "ala"
             snippet: "alarm :cancel all$0"
             description: "全てのalarm指定を解除する"
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#alarm"
@@ -255,13 +287,17 @@
           {
             type: "function"
             rightLabel: "Builtin action"
-            snippet: "\+ {1:@Argument1} ${2:@Argument2}$0"
+            text: "plus"
+            replacementPrefix: "\\+"
+            snippet: "\\+ {1:@Argument1} ${2:@Argument2}$0"
             description: "和を求める。 数値はdoubleではなく大きい10進数(java.math.BigDecimal)で計算される。"
             descriptionMoreURL: "http://www.k.riec.tohoku.ac.jp/idea/html/action.html#op"
           }
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "make"
+            replacementPrefix: "make"
             snippet: "make ${1:@fact}$0"
             description: """
             factで指定したファクトを作成する。ファクトはOAVデータ形式のみであり、リスト形式のファクトは作成できない。作成したファクトは、ワーキングメモリ内にあるファクトの中で新しさが最新となる識別番号が付けられる。
@@ -330,6 +366,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "pack"
+            replacementPrefix: "pack"
             snippet: "pack ${1:obj}$0"
             description: """
             objで指定したオブジェクト名のファクトの集合をリストにして返す。
@@ -352,6 +390,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "bind"
+            replacementPrefix: "bind"
             snippet: "bind ?${1:varName} ${2:value}$0"
             description: """
             変数?varNameに値valueをバインドする。valueには、定数などの他にアクションを記述することもできる。
@@ -366,6 +406,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "current-time"
+            replacementPrefix: "current"
             snippet: "current-time"
             description: "現在の時刻を返す。（返値の例：\"12:34:56\"）"
             descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#current-time"
@@ -422,6 +464,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "push"
+            # replacementPrefix: "pus"
             snippet: "push ${1:value} ${2:arg}$0"
             description: """
             argで指定したリストの末尾に要素valueを追加する。
@@ -434,6 +478,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "pop"
+            replacementPrefix: "pop"
             snippet: "pop ${1:arg}$0"
             description: """
             argで指定したリストから末尾の要素を削除しそれを返す。
@@ -445,6 +491,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "unshift"
+            # replacementPrefix: "uns"
             snippet: "unshift ${1:value} ${2:arg}$0"
             description: """
             argで指定したリストの先頭に要素valueを追加する。
@@ -457,6 +505,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "shift"
+            # replacementPrefix: "shi"
             snippet: "shift ${1:arg}$0"
             description: """
             argで指定したリストから先頭の要素を削除しそれを返す。
@@ -468,6 +518,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "append"
+            # replacementPrefix: "app"
             snippet: "append ${1:arg1} ${2:arg2}$0"
             description: """
             リストarg1とarg2の要素を持つリストを作成しそれを返す。
@@ -480,6 +532,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "size"
+            # replacementPrefix: "siz"
             snippet: "size ${1:arg}$0"
             description: """
             リストargの要素数を返す。0ならばそのリストは空である。
@@ -491,6 +545,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "sleep"
+            # replacementPrefix: "sle"
             snippet: "sleep ${1:milliSeconds}$0"
             description: """
             milliSecondsで指定した時間（単位ミリ秒）だけ動作を一時停止する。
@@ -502,6 +558,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "print"
+            # replacementPrefix: "pri"
             snippet: "print ${1:arg1}$0"
             description: """
             指定した引数を端末とインスペクタに表示する。端末はリポジトリ/ワークプレースを起動した端末である。引数は1つ以上指定する。
@@ -515,6 +573,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "settext"
+            # replacementPrefix: "set"
             snippet: "settext ${1:arg1}$0"
             description: """
             指定した引数をエージェントモニタのアイコンの横に表示する。 引数は1つ以上指定する。
@@ -527,6 +587,8 @@
           {
             type: "function"
             rightLabel: "Builtin action"
+            text: "inspect"
+            # replacementPrefix: "ins"
             snippet: "inspect"
             description: "インスペクタを開く。インスペクタ起動後、動作を一時停止する。"
             descriptionMoreURL: "http://www.ka.riec.tohoku.ac.jp/idea/html/action.html#inspect"
