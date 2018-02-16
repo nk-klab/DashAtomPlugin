@@ -27,7 +27,7 @@
     'name': 'string.quoted.double'
   }
   { # Attribute of OVA format data
-    'match': '(?<=:)[\\w\\-]+(?=\\s)'
+    'match': '(?<=:)[\\w\\-]+(?=[\\s\\)])'
     'name': 'entity.name.type'
   }
   { # Variable
@@ -35,7 +35,7 @@
     'name': 'variable'
   }
   { # Variable combined with attribute
-    'match': '(?<=\\?)[\\w\\-]+(?=\\:[\\w\\-]+\\s)'
+    'match': '(?<=\\?)[\\w\\-]+(?=\\:[\\w\\-]+[\\)\\s])'
     'name': 'variable'
   }
   { # Reserved Constant
