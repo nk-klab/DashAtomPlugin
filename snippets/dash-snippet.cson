@@ -134,7 +134,7 @@
   'condition with checking list size':
     'prefix':'checkListSize'
     'body': """(bind ?${1:@sizeVar} (size ?${2:@listVar}))
-			(== ?${1:@sizeVar} ${3:@value})\n
+			(== ?${1:@sizeVar} ${3:@value})
       """
   # comment
   'separator comment':
