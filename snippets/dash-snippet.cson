@@ -114,7 +114,7 @@
 
   'bind current time':
     'prefix':'bindTime'
-    'body': 'bind ?${1:hogeVarToBind} (current-time))'
+    'body': 'bind ?${1:hogeVarToBind} (current-time)'
 
   'bind searched agent by lookup command':
     'prefix':'bindLookup'
@@ -133,8 +133,8 @@
   # Other typical conditions
   'condition with checking list size':
     'prefix':'checkListSize'
-    'body': """(bind ?${1:@sizeVar} (size ?${1:@listVar}))
-			(== ?${1:@sizeVar} ${4:@value})\n
+    'body': """(bind ?${1:@sizeVar} (size ?${2:@listVar}))
+			(== ?${1:@sizeVar} ${3:@value})\n
       """
   # comment
   'separator comment':
